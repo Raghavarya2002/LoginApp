@@ -1,14 +1,19 @@
-package com.example.loginapp
+package com.example.loginapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
+import com.example.loginapp.R
+import com.example.loginapp.utils.login
+import com.example.loginapp.utils.toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.edit_text_email
-import kotlinx.android.synthetic.main.activity_register.*
+
+import kotlinx.android.synthetic.main.activity_login.text_email
+
+
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var mauth : FirebaseAuth
@@ -20,33 +25,38 @@ class LoginActivity : AppCompatActivity() {
 
         mauth = FirebaseAuth.getInstance()
         button_sign_in.setOnClickListener {
-            val email = edit_text_email.text.toString().trim()
-            val password =edit_text_password.text.toString().trim()
+            val email = text_email.text.toString().trim()
+            val password =edit_text_Password.text.toString().trim()
             if(email.isEmpty()){
-                edit_text_email.error="Email Required"
-                edit_text_email.requestFocus()
+                text_email.error="Email Required"
+                text_email.requestFocus()
                 return@setOnClickListener
             }
             if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                edit_text_email.error="Valid Email Required"
-                edit_text_email.requestFocus()
+                text_email.error="Valid Email Required"
+                text_email.requestFocus()
                 return@setOnClickListener
 
             }
             if(password.isEmpty() || password.length < 6)
             {
-                edit_text_password.error="At least 6 characters are required"
-                edit_text_password.requestFocus()
+                edit_text_Password.error="At least 6 characters are required"
+                edit_text_Password.requestFocus()
                 return@setOnClickListener
 
             }
-            
+
             loginuser(email,password)
 
         }
 
         text_view_register.setOnClickListener {
-            startActivity(Intent(this@LoginActivity,RegisterActivity::class.java))
+            startActivity(Intent(this@LoginActivity,
+                RegisterActivity::class.java))
+        }
+        text_view_forget_password.setOnClickListener {
+            startActivity(Intent(this@LoginActivity,
+                ResetPasswordActivity::class.java))
         }
     }
 

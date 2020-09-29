@@ -1,10 +1,13 @@
-package com.example.loginapp
+package com.example.loginapp.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
+import com.example.loginapp.R
+import com.example.loginapp.utils.login
+import com.example.loginapp.utils.toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_register.*
 
@@ -20,16 +23,16 @@ class RegisterActivity : AppCompatActivity() {
 
 
         button_register.setOnClickListener {
-            val email = edit_text_email.text.toString().trim()
+            val email = text_email.text.toString().trim()
             val password = edit_text_password.text.toString().trim()
             if (email.isEmpty()) {
-                edit_text_email.error = "Email Required"
-                edit_text_email.requestFocus()
+                text_email.error = "Email Required"
+                text_email.requestFocus()
                 return@setOnClickListener
             }
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                edit_text_email.error = "Valid Email Required"
-                edit_text_email.requestFocus()
+                text_email.error = "Valid Email Required"
+                text_email.requestFocus()
                 return@setOnClickListener
 
             }

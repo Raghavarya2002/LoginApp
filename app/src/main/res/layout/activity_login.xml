@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#008577"
     android:orientation="vertical"
+    android:background="#00857a"
     android:scrollbarAlwaysDrawVerticalTrack="true"
-    tools:context=".LoginActivity">
+    tools:context=".ui.LoginActivity">
 
 
     <RelativeLayout
@@ -53,10 +53,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
-                android:labelFor="@+id/edit_text_email"
+                android:labelFor="@+id/text_email"
                 android:text="email"/>
     <EditText
-        android:id="@+id/edit_text_email"
+        android:id="@+id/text_email"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
